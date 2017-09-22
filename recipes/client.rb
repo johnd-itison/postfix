@@ -37,6 +37,6 @@ else
   relayhost = results.map { |n| n['private_ip'] }.first
 end
 
-node.normal['postfix']['main']['relayhost'] = "[#{relayhost}]"
+node.default['postfix']['main']['relayhost'] = "[#{relayhost}]" if node['postfix']['main']['relayhost']
 
 include_recipe 'postfix'
